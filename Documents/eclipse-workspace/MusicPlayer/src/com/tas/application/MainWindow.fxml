@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<?import javafx.scene.web.WebView?>
+
+<BorderPane fx:id="mainBorderPane" fx:controller="com.tas.application.Controller"
+            xmlns:fx="http://javafx.com/fxml" >
+    <top>
+    	<VBox>
+    	   <MenuBar>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Import" onAction="#handleImport"/>
+                        <MenuItem text="Settings" onAction="#showSettingsDialog"/>
+                        <MenuItem text="Download Songs" onAction="#showDownloadSongsDialog"/>
+                        <MenuItem text="Exit" onAction="#handleExit"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+    	</VBox>
+    </top>
+    
+    <left>
+    	<VBox prefWidth="235.0" spacing="5">
+    	    <padding>
+                <Insets bottom="3.0" left="5.0" right="3.0" top="3.0"/>
+            </padding>
+            <HBox alignment="CENTER" spacing="3.0">
+                <Slider fx:id="volSlider" prefHeight="22.0" maxWidth="175" value="1.0" min="0.0" max="1.0" minorTickCount="1" opacity="0.75"/>
+                <ImageView>
+                    <Image url="file:media\\Volume12.png"/>
+                </ImageView>
+            </HBox>
+    	    <GridPane alignment="CENTER" hgap="2.0">
+                <Button fx:id="playButton" alignment="CENTER"  GridPane.rowIndex="0" GridPane.columnIndex="2" prefHeight="36.0" prefWidth="36.0" maxHeight="36.0" maxWidth="36.0" onAction="#handleResumePauseSong"/>
+                <ToggleButton fx:id="shuffleButton" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0" prefHeight="8.0" prefWidth="10.0" maxHeight="8.0" maxWidth="10.0" onAction="#handleShuffle"/>
+                <Button fx:id="prevButton" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="1" prefHeight="25.0" prefWidth="28.0" onAction="#handlePreviousSong"/>
+                <Button fx:id="nextButton" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="3" prefHeight="25.0" prefWidth="28.0" onAction="#handleNextSong"/>
+                <ToggleButton fx:id="repeatButton" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="4" prefHeight="8.0" prefWidth="10.0" maxHeight="8.0" maxWidth="10.0" onAction="#handleRepeat"/>
+            </GridPane>
+            
+            <GridPane alignment="CENTER" hgap="2.0" vgap="2.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="NEVER" minWidth="40.0" maxWidth="40.0"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="100.0"/>
+                    <ColumnConstraints hgrow="NEVER" minWidth="40.0" maxWidth="40.0"/>
+                </columnConstraints>
+                <Label fx:id="currentSongTitle" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER"/>
+                <Label fx:id="currentSongArtist" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER"/>
+                <Label fx:id="currentTime" text="0:00" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.halignment="RIGHT"/>
+                <Slider fx:id="timeSlider" GridPane.rowIndex="2" GridPane.columnIndex="1" prefHeight="22.0" maxWidth="175" minorTickCount="1" opacity="0.75" GridPane.halignment="CENTER"/>
+                <Label fx:id="totalTime" text="0:00" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            </GridPane>
+	  		<Label fx:id="musicLabel" text="Music"/>
+	  		<Label fx:id="playlistsLabel" text="Playlists">
+	  		   <contextMenu>
+                    <ContextMenu>
+                        <items>
+                            <MenuItem text="Add Playlist" onAction="#handleAddPlaylist"/>
+                        </items>
+                    </ContextMenu>
+                </contextMenu>
+	  		</Label>
+	  		<ListView fx:id="playlistListView" prefWidth="230.0">
+                <contextMenu>
+                    <ContextMenu>
+                        <items>
+                            <MenuItem text="Add Playlist" onAction="#handleAddPlaylist"/>
+                            <MenuItem text="Delete Playlist" onAction="#handleDeletePlaylist"/>
+                        </items>
+                    </ContextMenu>
+                </contextMenu>
+            </ListView>
+            <Label fx:id="YoutubeLabel" text="Youtube"/>
+    	</VBox>
+    </left>
+    
+	<center>
+	   <VBox>
+		   <TableView fx:id="songsTableView" scaleShape="true" BorderPane.alignment="CENTER" onKeyPressed="#handleDeleteKeyPressed">
+		      <contextMenu>
+		          <ContextMenu fx:id="songColContextMenu" autoHide="true" consumeAutoHidingEvents="false" >
+		              <items>
+		                <CustomMenuItem hideOnClick="false" id="tableViewHeaderCM">
+		                  <content>
+		                      <GridPane alignment="CENTER_LEFT" vgap="2.0">
+			                      <CheckBox fx:id="songTitleColVisibleCM" text="Song" GridPane.rowIndex="0" GridPane.columnIndex="0" onAction="#handleSongTitleColVisibility"/>
+			                      <CheckBox fx:id="songArtistColVisibleCM" text="Artist" GridPane.rowIndex="1" GridPane.columnIndex="0" onAction="#handleSongArtistColVisibility"/>
+			                      <CheckBox fx:id="albumTitleColVisibleCM" text="Album" GridPane.rowIndex="2" GridPane.columnIndex="0" onAction="#handleAlbumTitleColVisibility"/>
+			                      <CheckBox fx:id="dateModifiedColVisibleCM" text="Date Modified" GridPane.rowIndex="3" GridPane.columnIndex="0" onAction="#handleDateModifiedColVisibility"/>
+			                      <CheckBox fx:id="dateAddedColVisibleCM" text="Date Added" GridPane.rowIndex="4" GridPane.columnIndex="0" onAction="#handleDateAddedColVisibility"/>
+			                      <CheckBox fx:id="timeColVisibleCM" text="Time" GridPane.rowIndex="5" GridPane.columnIndex="0" onAction="#handleTimeColVisibility"/>
+			                      <CheckBox fx:id="genreColVisibleCM" text="Genre" GridPane.rowIndex="6" GridPane.columnIndex="0" onAction="#handleGenreColVisibility"/>
+			                      <CheckBox fx:id="yearColVisibleCM" text="Year" GridPane.rowIndex="7" GridPane.columnIndex="0" onAction="#handleYearColVisibility"/>
+			                      <CheckBox fx:id="playsColVisibleCM" text="Plays" GridPane.rowIndex="8" GridPane.columnIndex="0" onAction="#handlePlaysColVisibility"/>
+		                      </GridPane>
+		                  </content>
+		                </CustomMenuItem>
+		            </items>
+		          </ContextMenu>
+		      </contextMenu>
+		      <columns>
+			      <TableColumn fx:id="rowNumberCol" minWidth="25.0" prefWidth="25.0" text="#" sortable="false"/>
+			      <TableColumn fx:id="warningCol" resizable="false" prefWidth="10.0" text="">
+			           <cellValueFactory>
+		                   <PropertyValueFactory property="warning"/>
+		               </cellValueFactory>
+		           </TableColumn>
+			       <TableColumn fx:id="songTitleCol" prefWidth="200.0" text="Song">
+			           <cellValueFactory>
+			       	       <PropertyValueFactory property="songTitle"/>
+			       	   </cellValueFactory>
+			       </TableColumn>
+			       <TableColumn fx:id="songArtistCol" prefWidth="150.0" text="Artist">
+				       	<cellValueFactory>
+				       		<PropertyValueFactory property="songArtist"/>
+				       	</cellValueFactory>
+			       </TableColumn>
+			       <TableColumn fx:id="albumTitleCol" prefWidth="150.0" text="Album">
+				      	<cellValueFactory>
+				      		<PropertyValueFactory property="albumTitle"/>
+				      	</cellValueFactory>
+			       </TableColumn>
+			       <TableColumn fx:id="dateModifiedCol" prefWidth="100.0" text="Date Modified">
+			            <cellValueFactory>
+			                <PropertyValueFactory property="dateModifiedFormatted"/>
+			            </cellValueFactory>
+		           </TableColumn>
+		           <TableColumn fx:id="dateAddedCol" prefWidth="100.0" text="Date Added">
+		                <cellValueFactory>
+		                    <PropertyValueFactory property="dateAddedFormatted"/>
+		                </cellValueFactory>
+		           </TableColumn>
+			       <TableColumn fx:id="timeCol" prefWidth="50.0" text="Time">
+			            <cellValueFactory>
+			                <PropertyValueFactory property="trackLengthFormatted"/>
+			            </cellValueFactory>
+			       </TableColumn>
+			       <TableColumn fx:id="genreCol" prefWidth="85.0" text="Genre">
+				       	<cellValueFactory>
+				       		<PropertyValueFactory property="genre"/>
+				       	</cellValueFactory>
+			       </TableColumn>
+			       <TableColumn fx:id="yearCol" prefWidth="50.0" text="Year">
+				       	<cellValueFactory>
+				       		<PropertyValueFactory property="year"/>
+				       	</cellValueFactory>
+			       </TableColumn>
+			       <TableColumn fx:id="playsCol" prefWidth="50.0" text="Plays">
+				       	<cellValueFactory>
+				       		<PropertyValueFactory property="playCount"/>
+				       	</cellValueFactory>
+			       </TableColumn>
+		      </columns>
+		      <contextMenu>
+		          <ContextMenu fx:id="songContextMenu">
+		              <items>
+		                  <MenuItem text="Play" onAction="#handlePlaySong"/>
+		                  <Menu fx:id="addSongToPlaylistContextMenu" text="Add Song to Playlist"/>
+		                  <MenuItem text="Properties" onAction="#showSongPropertiesDialog"/>
+		                  <MenuItem text="Reset Play Count" onAction="#handleResetSongPlayCount"/>
+		                  <MenuItem text="Delete" onAction="#handleDeleteSong"/>
+		              </items>
+		          </ContextMenu>
+		      </contextMenu>
+		    </TableView>
+		    
+		    <WebView fx:id="webView"/>
+		    
+		    <HBox fx:id="songsCountBox" alignment="CENTER" prefHeight="25.0" minHeight="25.0" maxHeight="25.0">
+		        <padding>
+                    <Insets bottom="5.0" left="0.0" right="0.0" top="5.0"/>
+                </padding>
+		        <Label fx:id="songsCount"/>
+		        <Label text=" Songs"/>
+		    </HBox>
+	    </VBox>
+   </center>
+</BorderPane>

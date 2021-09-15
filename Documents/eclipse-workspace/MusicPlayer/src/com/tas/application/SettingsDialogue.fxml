@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.geometry.Insets?>
+
+
+<DialogPane fx:controller="com.tas.application.SettingsController" xmlns:fx="http://javafx.com/fxml/1">
+    <headerText>
+    </headerText>
+    <content>
+        <TabPane prefHeight="410.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="General">
+                <content>
+                    <GridPane vgap="10" hgap="0" alignment="TOP_LEFT">
+                        <padding>
+                            <Insets bottom="10.0" left="0.0" right="0.0" top="10.0"/>
+                        </padding>
+                        <columnConstraints>
+                            <ColumnConstraints  prefWidth="20.0" maxWidth="20.0"/>
+                            <ColumnConstraints maxWidth="200.0"/>
+                        </columnConstraints>
+                        <Label text="Theme: " GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                        <fx:define>
+                            <ToggleGroup fx:id="themeGroup"/>
+                        </fx:define>
+                        <RadioButton fx:id="lightThemeButton" text="Light" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="2" toggleGroup="$themeGroup"/>
+                        <RadioButton fx:id="darkThemeButton" text="Dark" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="2" toggleGroup="$themeGroup"/>
+                        <HBox spacing="15.0" alignment="BOTTOM_LEFT" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                            <Label text="Default File Directory:"/>
+                            <Button text="Set Directory" onAction="#handleSetDefaultFileDir"/>
+                        </HBox>
+                        <Label fx:id="defaultFileDir" GridPane.rowIndex="5" GridPane.columnIndex="1" GridPane.columnSpan="3" wrapText="true"/>
+                    </GridPane>
+                </content>
+            </Tab>
+            <Tab text="Columns">
+                <content>
+                    <GridPane vgap="10" hgap="0" alignment="TOP_LEFT">
+                        <padding>
+                            <Insets bottom="10.0" left="0.0" right="0.0" top="10.0"/>
+                        </padding>
+                        <columnConstraints>
+                            <ColumnConstraints  prefWidth="20.0" maxWidth="20.0"/>
+                            <ColumnConstraints maxWidth="200.0"/>
+                        </columnConstraints>
+                        <Label text="Visiblility:" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                        <CheckBox fx:id="songTitleColVisibleBox" text="Song" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="songArtistColVisibleBox" text="Artist" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="albumTitleColVisibleBox" text="Album" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="dateModifiedColVisibleBox" text="Date Modified" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="dateAddedColVisibleBox" text="Date Added" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="timeColVisibleBox" text="Time" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="genreColVisibleBox" text="Genre" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="yearColVisibleBox" text="Year" GridPane.rowIndex="8" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="playsColVisibleBox" text="Plays" GridPane.rowIndex="9" GridPane.columnIndex="1" />
+                    </GridPane>
+                </content>
+            </Tab>
+            </tabs>
+        </TabPane>
+    </content>  
+</DialogPane>
+

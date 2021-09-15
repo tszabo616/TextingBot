@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.web.HTMLEditor?>
+
+
+<DialogPane fx:controller="com.tas.application.SongPropertiesController" 
+            xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <VBox>
+            <HBox spacing="5.0">
+                <padding>
+                   <Insets bottom="10.0" left="0.0" right="0.0" top="0.0"/>
+                </padding>
+                <ImageView fx:id="albumArtworkFieldHeader" preserveRatio="true" fitHeight="75.0" fitWidth="75.0"/>
+                <GridPane>
+                    <Label fx:id="songTitleFieldHeader" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label fx:id="songArtistFieldHeader" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <Label fx:id="albumTitleFieldHeader" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                </GridPane>
+            </HBox>
+	        <TabPane prefHeight="365.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE">
+		        <tabs>
+		            <Tab text="Song">
+			            <content>
+				            <GridPane vgap="10" hgap="10" alignment="TOP_LEFT">
+				                <padding>
+			                       <Insets bottom="0.0" left="0.0" right="0.0" top="10.0"/>
+			                    </padding>
+								<Label text="Song Title: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+								<TextField fx:id="songTitleField" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3" prefWidth="260.0"/>
+								
+								<Label text="Song Artist: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+								<TextField fx:id="songArtistField" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="3" prefWidth="260.0"/>
+								
+								<Label text="Album Title: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+								<TextField fx:id="albumTitleField" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="3" prefWidth="260.0"/>
+								
+								<Label text="Album Artist: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+								<TextField fx:id="albumArtistField" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3" prefWidth="260.0"/>
+								
+								<Label text="Track Number: " GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+								<TextField fx:id="trackNumberField" GridPane.rowIndex="4" GridPane.columnIndex="1" maxWidth="40.0"/>
+								
+								<Label text="of" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+			                    <TextField fx:id="tracksTotalField" GridPane.rowIndex="4" GridPane.columnIndex="3" maxWidth="40.0"/>
+			                             
+			                    <Label text="BPM: " GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+			                    <TextField fx:id="bpmField" GridPane.rowIndex="5" GridPane.columnIndex="1" GridPane.columnSpan="3" maxWidth="60.0"/>
+								
+								<Label text="Year: " GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+								<TextField fx:id="yearField" GridPane.rowIndex="6" GridPane.columnIndex="1" GridPane.columnSpan="3" maxWidth="60.0"/>
+								
+								<Label text="Genre: " GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+								<TextField fx:id="genreField" GridPane.rowIndex="7" GridPane.columnIndex="1" GridPane.columnSpan="3" prefWidth="260.0"/>
+								
+								<Label text="Track Length: " GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+		                        <Label fx:id="trackLengthField" GridPane.rowIndex="8" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+								
+								<Label text="Play Count: " GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+								<Label fx:id="playsField" GridPane.rowIndex="9" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+							</GridPane>
+						</content>
+		            </Tab>
+		            <Tab text="Album Artwork">
+			            <content>
+			                 <VBox>
+				                 <padding>
+	                                <Insets bottom="0.0" left="0.0" right="0.0" top="10.0"/>
+	                             </padding>
+	                             <HTMLEditor fx:id="albumArtworkHTML" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" 
+	                                 prefHeight="400.0" prefWidth="200.0"/>
+			                 </VBox>
+			            </content>
+		            </Tab>
+		            <Tab text="Sorting">
+						<content>
+		                    <GridPane vgap="10" hgap="10" alignment="TOP_LEFT">
+		                        <padding>
+		                            <Insets bottom="10.0" left="0.0" right="0.0" top="10.0"/>
+		                        </padding>
+		                        <columnConstraints>
+		                            <ColumnConstraints maxWidth="100.0"/>
+		                            <ColumnConstraints maxWidth="275.0"/>
+		                        </columnConstraints>
+		                        <rowConstraints>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                        </rowConstraints>
+		                        <Label text="Song Title: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+		                        <Label fx:id="songTitleFieldSorting" GridPane.rowIndex="0" GridPane.columnIndex="1" wrapText="true"/>
+		                        
+		                        <Label text="For Sorting: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+		                        <TextField fx:id="songTitleSortField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="275.0"/>
+		                        
+		                        <Label text="Song Artist: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+		                        <Label fx:id="songArtistFieldSorting" GridPane.rowIndex="3" GridPane.columnIndex="1" wrapText="true"/>
+		                        
+		                        <Label text="For Sorting: " GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+		                        <TextField fx:id="songArtistSortField" GridPane.rowIndex="4" GridPane.columnIndex="1" prefWidth="275.0"/>
+		                        
+		                        <Label text="Album Title: " GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+		                        <Label fx:id="albumTitleFieldSorting" GridPane.rowIndex="6" GridPane.columnIndex="1" wrapText="true"/>
+		                        
+		                        <Label text="For Sorting: " GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+		                        <TextField fx:id="albumTitleSortField" GridPane.rowIndex="7" GridPane.columnIndex="1" prefWidth="275.0"/>
+		                    </GridPane>
+		                </content>
+		            </Tab>
+		            <Tab text="File">
+		                <content>
+			                <GridPane vgap="10" hgap="10" alignment="TOP_LEFT">
+			                    <padding>
+			                        <Insets bottom="10.0" left="0.0" right="0.0" top="10.0"/>
+			                    </padding>
+			                    <columnConstraints>
+		                            <ColumnConstraints maxWidth="100.0"/>
+		                            <ColumnConstraints maxWidth="275.0"/>
+		                        </columnConstraints>
+		                        <rowConstraints>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                            <RowConstraints valignment="TOP"/>
+		                        </rowConstraints>
+			                    <Label text="File Size: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+		                        <Label fx:id="fileSizeField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+		                        
+		                        <Label text="Bit Rate: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+		                        <Label fx:id="bitRateField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+		                        
+		                        <Label text="Variable Bit Rate: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+		                        <Label fx:id="variableBitRateField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+			                    
+			                    <Label text="Date Added: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+			                    <Label fx:id="dateAddedField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+			                    
+			                    <Label text="Date Modified: " GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+			                    <Label fx:id="dateModifiedField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+			                    
+			                    <Label text="Location: " GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+			                    <Label fx:id="locationField" GridPane.rowIndex="5" GridPane.columnIndex="1" wrapText="true"/>
+			                </GridPane>
+		                </content>
+		            </Tab>
+	            </tabs>
+	        </TabPane>
+        </VBox>
+    </content>  
+</DialogPane>
+
