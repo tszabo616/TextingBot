@@ -1,0 +1,843 @@
+/*******************************************************************************
+ * TableView Header Context Menu                                               *
+ ******************************************************************************/
+#tableViewHeaderCM {
+     -fx-background-color: rgb(250,250,250);
+     -fx-text-fill: rgb(50,50,50);
+}
+#tableViewHeaderCM:focused {
+     -fx-background-color: rgb(250,250,250);
+     -fx-text-fill: rgb(50,50,50);
+}
+#tableViewHeaderCM:hover {
+     -fx-background-color: rgb(250,250,250);
+     -fx-text-fill: rgb(50,50,50);
+     -fx-text-inner-color: rgb(255,0,0);
+}
+
+/*******************************************************************************
+ * Root                                                                        *
+ ******************************************************************************/
+.root{
+    -fx-background-color: rgb(245,245,245);
+    -fx-text-base-color: rgb(50,50,50);
+}
+
+/*******************************************************************************
+ * DialogPane                                                                  *
+ ******************************************************************************/
+.dialog-pane{
+    -fx-background-color: rgb(245,245,245);
+}
+
+/*******************************************************************************
+ * TabPane                                                                     *
+ ******************************************************************************/
+.tab-pane {    
+    -fx-tab-min-width: 25; 
+    -fx-tab-min-height: 15;
+    -fx-tab-max-height: 24;
+}
+.tab {
+    -fx-background-insets: 0,1 1 0 1, 1 1 0 1;
+    -fx-background-radius: 6 6 0 0, 5 5 0 0, 4 4 0 0;
+    -fx-padding: 3 5 2 5;
+}
+.tab:top, .tab:right, .tab:left, .tab:bottom {
+    -fx-background-color: rgb(160,160,160), rgb(210,210,210), linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);      
+}
+.tab:top:hover, .tab:right:hover, .tab:left:hover, .tab:bottom:hover {
+    -fx-background-color: rgb(160,160,160), rgb(210,210,210), linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);      
+}
+.tab-content-area {
+    -fx-background-color: rgb(160,160,160), rgb(245,245,245);
+    -fx-background-insets: 0, 1.5 0 0 0;
+}
+.tab-pane:left .tab-content-area {
+    -fx-background-color: rgb(160,160,160), rgb(210,210,210), linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0, 1, 0 0 0 3, 1 1 1 4;    
+}
+.tab-pane:bottom .tab-content-area {
+    -fx-background-color: rgb(160,160,160), rgb(210,210,210), linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0, 1, 0 0 3 0, 1 1 4 1;    
+}
+.tab-pane:right .tab-content-area {
+    -fx-background-color: rgb(160,160,160), rgb(210,210,210), linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0, 1, 0 3 0 0, 1 4 1 1;    
+}
+.tab:selected, .tab:selected:hover {
+    -fx-background-color: rgb(160,160,160), rgb(210,210,210), linear-gradient(to bottom,rgb(225,225,225) 0%, rgb(235,235,235) 100%);    
+    -fx-background-insets: 0, 1 1 0 1, 2 2 0 2;
+    -fx-background-radius: 6 6 0 0, 5 5 0 0, 4 4 0 0;
+}
+.tab-pane *.tab-header-background {
+    -fx-background-color: transparent, transparent, transparent;
+    -fx-effect: null;
+}
+.tab-pane .headers-region {
+    -fx-effect: null;
+}
+
+/*******************************************************************************
+ * Button                                                                      *
+ ******************************************************************************/
+.button {   
+    -fx-background-color: linear-gradient(to bottom,rgb(225,225,225) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 1;
+    -fx-background-radius: 3;    
+    -fx-padding: 5 5 5 5;
+    }
+.button:focused {   
+    -fx-background-color: linear-gradient(to bottom,rgb(225,225,225) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 1; 
+}
+.button:focused:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(240,240,240) 0%,rgb(215,215,215) 100%);
+    -fx-background-insets: 1;   
+}
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(240,240,240) 0%,rgb(215,215,215) 100%);
+    -fx-background-insets: 1;   
+}
+.button:default {   
+    -fx-background-color: linear-gradient(to bottom,derive(rgb(225,225,225),-10%) 0%,derive(rgb(200,200,200),-10%) 100%);       
+    -fx-background-insets: 1;
+}
+.button:default:hover {
+    -fx-background-color: linear-gradient(to bottom,derive(rgb(225,225,225),15%) 0%,derive(rgb(200,200,200),15%) 100%);       
+    -fx-background-insets: 1;   
+}
+.button:default:focused {
+    -fx-background-color: linear-gradient(to bottom,derive(rgb(225,225,225),-10%) 0%,derive(rgb(200,200,200),-10%) 100%);       
+    -fx-background-insets: 1;
+}
+.button:default:focused:hover {
+    -fx-background-color: linear-gradient(to bottom,derive(rgb(225,225,225),15%) 0%,derive(rgb(200,200,200),15%) 100%);       
+    -fx-background-insets: 1;   
+}
+.button:focused:hover:pressed, .button:armed,
+.button:default:focused:hover:pressed, .button:default:armed {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%,rgb(150,150,150) 100%);
+    -fx-background-insets: 1;   
+}
+
+/*******************************************************************************
+ * ToggleButton                                                                *
+ ******************************************************************************/
+.toggle-button {
+    -fx-background-color: linear-gradient(to bottom,rgb(225,225,225) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 1;
+    -fx-background-radius: 3;   
+    -fx-padding: 1 5 1 5;
+}
+.toggle-button:focused {
+    -fx-background-color: linear-gradient(to bottom,rgb(225,225,225) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 1;    
+}
+.toggle-button:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(240,240,240) 0%,rgb(215,215,215) 100%);
+    -fx-background-insets: 1;    
+}
+.toggle-button:hover:focused {
+    -fx-background-color: linear-gradient(to bottom,rgb(240,240,240) 0%,rgb(215,215,215) 100%);
+    -fx-background-insets: 1;
+}
+.toggle-button:focused:pressed {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%,rgb(150,150,150) 100%);
+    -fx-background-insets: 1;
+}
+.toggle-button:armed {
+    -fx-background-color: linear-gradient(to bottom,rgb(150,150,150) 0%,rgb(130,130,130) 100%);
+    -fx-background-insets: 1;    
+}
+.toggle-button:focused:selected:armed {
+    -fx-background-color: linear-gradient(to bottom,rgb(150,150,150) 0%,rgb(130,130,130) 100%);
+    -fx-background-insets: 1;    
+}
+.toggle-button:selected {
+    -fx-background-color: linear-gradient(to bottom,rgb(150,150,150) 0%,rgb(130,130,130) 100%);       
+    -fx-background-insets: 1;   
+    -fx-text-fill: -fx-text-base-color; 
+}
+.toggle-button:selected:focused {    
+    -fx-background-color: linear-gradient(to bottom,rgb(150,150,150) 0%,rgb(130,130,130) 100%);
+    -fx-background-insets: 1;
+}
+
+/*******************************************************************************
+ * CheckBox                                                                    *
+ ******************************************************************************/
+.check-box { 
+    -fx-text-fill: rgb(50,50,50);
+}
+.check-box .box {
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-padding: 4;
+    -fx-background-radius: 4;
+}
+.check-box:focused .box {
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+}
+.check-box:hover .box {    
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+}
+.check-box:focused:hover .box {   
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+}
+.check-box:armed .box {    
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+}
+.check-box:focused:selected:armed .box {
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+}
+.check-box:selected .box {
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%,rgb(200,200,200) 100%);       
+    -fx-background-insets: 0;
+    -fx-padding: 4;
+}
+.check-box:selected:focused .box {
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+}
+.check-box:focused:pressed .box {
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%,rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+}
+.check-box .mark {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 4;   
+    -fx-shape: "M0,4H2L3,6L6,0H8L4,8H2Z";    
+}
+.check-box:indeterminate .mark {
+    -fx-background-color: rgb(50,50,50);
+    -fx-shape: "M0,0H8V2H0Z";
+    -fx-scale-shape: false;
+}
+.check-box:selected .mark {
+    -fx-background-color: rgb(50,50,50); 
+}
+
+/*******************************************************************************
+* ComboBoxBase                                                                 *
+*******************************************************************************/
+.combo-box-base  {    
+    -fx-border-color: transparent rgb(235,235,235) transparent transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+.combo-box-base:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+.combo-box-base:focused:showing, .combo-box-base:focused:showing:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+.combo-box-base:focused {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;   
+    -fx-background-radius: 0;
+}
+.combo-box-base:focused:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+.combo-box-base:focused:pressed {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;    
+    -fx-background-radius: 0;
+}
+.combo-box-base .arrow-button {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+.combo-box-base:hover .arrow-button{
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;   
+}
+.combo-box-base:editable:hover .arrow-button,
+.combo-box-base:editable:focused:pressed .arrow-button {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;  
+}
+.combo-box-base:editable .arrow-button:hover{
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;     
+}
+.combo-box-base:editable:focused .arrow-button:pressed{
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;   
+}
+.combo-box-base:focused:pressed .arrow-button,
+.combo-box-base:focused:showing .arrow-button,
+.combo-box-base:focused:showing:hover .arrow-button {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;    
+}
+.combo-box-base .arrow {    
+    -fx-background-color: rgb(50,50,50);
+    -fx-padding: 0.25em;
+}
+.combo-box-base:editable .combo-box-base {
+    -fx-background-color:transparent;
+} 
+.combo-box-base:editable .text-field {
+    -fx-background-color: rgb(225,225,225), rgb(255,255,255);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3;
+    -fx-padding: 2 4 2 4;   
+    -fx-prompt-text-fill: derive(white,-30%);
+}
+.combo-box-base:editable:hover .text-field {
+    -fx-background-color: rgb(225,225,225),rgb(252,252,252);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3;
+}
+.combo-box-base:editable .text-field:focused {
+    -fx-background-color: rgb(225,225,225), rgb(255,255,255);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3;
+}
+
+/*******************************************************************************
+ * RadioButton                                                                 *
+ ******************************************************************************/
+.radio-button {
+    -fx-text-fill: rgb(50,50,50);
+}
+.radio-button .radio  {
+    -fx-background-color: linear-gradient(to bottom,rgb(200,200,200) 0%, rgb(175,175,175) 100%);
+    -fx-background-insets: 0;  
+    -fx-background-radius: 1.0em;
+    -fx-padding: 5;
+}
+.radio-button:focused .radio {
+    -fx-background-color: linear-gradient(to bottom,rgb(200,200,200) 0%, rgb(175,175,175) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 1.0em;   
+}
+.radio-button:hover .radio {
+    -fx-background-color: linear-gradient(to bottom,rgb(200,200,200) 0%, rgb(175,175,175) 100%);
+    -fx-background-insets: 0;
+}
+.radio-button:hover:focused .radio {
+    -fx-background-color: linear-gradient(to bottom,rgb(200,200,200) 0%, rgb(175,175,175) 100%);
+    -fx-background-insets: 0;
+}
+.radio-button:focused:pressed .radio {
+    -fx-background-color: linear-gradient(to bottom,rgb(200,200,200) 0%, rgb(175,175,175) 100%);
+    -fx-background-insets: 0;    
+}
+.radio-button:selected .radio {
+    -fx-background-color: linear-gradient(to bottom,rgb(200,200,200) 0%, rgb(175,175,175) 100%);     
+    -fx-background-insets: 0;
+}
+.radio-button:selected:focused .radio {
+    -fx-background-color: linear-gradient(to bottom,rgb(200,200,200) 0%, rgb(175,175,175) 100%);    
+    -fx-background-insets: 0;
+}
+.radio-button:armed .radio {
+    -fx-background-color: linear-gradient(to bottom,rgb(200,200,200) 0%, rgb(175,175,175) 100%);
+    -fx-background-insets: 0;
+}
+.radio-button:focused:selected:armed .radio {
+    -fx-background-color: linear-gradient(to bottom,rgb(200,200,200) 0%, rgb(175,175,175) 100%);
+    -fx-background-insets: 0;
+}
+.radio-button .dot {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1em;
+    -fx-padding: 3;
+}
+.radio-button:selected .dot {
+    -fx-background-color: rgb(50,50,50);
+    -fx-background-insets: 0;
+}
+
+/*******************************************************************************
+ * Slider                                                                      *
+ ******************************************************************************/
+.slider {
+}
+.slider .thumb {
+    -fx-background-color: linear-gradient(to bottom,rgb(170,170,170) 0%,rgb(150,150,150) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 1.0em;
+    -fx-padding: 5;
+}
+.slider:focused .thumb {    
+    -fx-background-color: linear-gradient(to bottom,rgb(170,170,170) 0%,rgb(150,150,150) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 1.0em;
+}
+.slider .thumb:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(190,190,190) 0%,rgb(215,215,215) 100%);
+    -fx-background-insets: 0;
+}
+.slider:focused .thumb:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(190,190,190) 0%,rgb(215,215,215) 100%);
+    -fx-background-insets: 0;
+}
+.slider:focused .thumb:pressed {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%,rgb(150,150,150) 100%);
+    -fx-background-insets: 0;
+}
+.slider .track {
+    -fx-background-color: transparent, rgb(120,120,120), rgb(220,220,220);
+    -fx-background-insets: 0,1,2;    
+    -fx-background-radius: 5;
+    -fx-padding: 3.5;
+}
+.slider:vertical .track {
+    -fx-background-color: transparent, rgb(120,120,120), rgb(220,220,220);
+    -fx-background-insets: 0,1,2;
+}
+.slider .axis:bottom {
+    -fx-border-color: rgb(120,120,120) transparent transparent transparent;
+}
+.slider .axis-tick-mark, .slider .axis-minor-tick-mark {
+    -fx-fill: null;
+    -fx-stroke: rgb(100,100,100);
+}
+
+/*******************************************************************************
+ * ScrollBar                                                                   *
+ ******************************************************************************/
+.scroll-bar{
+    -fx-background-color: transparent;  
+}
+.scroll-bar:vertical .track {
+    -fx-background-color: rgb(90,90,90),linear-gradient(to right,rgb(190,190,190) 0%,rgb(230,230,230) 80%); 
+    -fx-border-color:transparent;
+    -fx-background-radius: 9,9;
+    -fx-background-insets: 0,1; 
+}
+.scroll-bar:horizontal .track {
+    -fx-background-color: rgb(90,90,90),linear-gradient(to right,rgb(190,190,190) 0%,rgb(230,230,230) 80%);     
+    -fx-border-color:transparent;   
+    -fx-background-radius: 9,9;
+    -fx-background-insets: 0,1; 
+}
+.scroll-bar:vertical .track-background {
+    -fx-background-color: rgb(90,90,90);
+    -fx-background-insets:  0;
+    -fx-background-radius: 0;
+}
+.scroll-bar:horizontal .track-background {
+    -fx-background-color: rgb(90,90,90);
+    -fx-background-insets:  0;
+    -fx-background-radius: 0;
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgb(90,90,90),linear-gradient(to right,rgb(240,240,240) 0%,rgb(220,220,220) 100%);
+    -fx-background-insets: 0,1;
+    -fx-background-radius: 9,9;
+}
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: rgb(90,90,90),linear-gradient(to right,rgb(240,240,240) 0%,rgb(220,220,220) 100%);
+    -fx-background-insets: 0,1;
+    -fx-background-radius: 9,9;
+}
+.scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: rgb(90,90,90),linear-gradient(to right,rgb(180,180,180) 0%,rgb(190,190,190) 100%);    
+    -fx-border-color:transparent;
+    -fx-background-radius: 9,9;
+    -fx-background-insets: 0,1; 
+}
+.scroll-bar:horizontal .thumb:pressed {
+    -fx-background-color: rgb(90,90,90),linear-gradient(to right,rgb(180,180,180) 0%,rgb(190,190,190) 100%);     
+    -fx-background-radius: 9,9;
+    -fx-background-insets: 0,1; 
+}
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: linear-gradient(to right,rgb(230,230,230) 0%,rgb(200,200,200) 100%);  
+    -fx-background-radius: 0;
+    -fx-padding: 6 4 6 4; 
+    -fx-background-insets: 1 1 -8 1;   
+}
+.scroll-bar:vertical .increment-button{
+    -fx-background-color: linear-gradient(to right,rgb(230,230,230) 0%,rgb(200,200,200) 100%);    
+    -fx-background-radius: 0;
+    -fx-padding: 6 4 6 4;
+    -fx-background-insets: -8 1 1 1;
+}
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: linear-gradient(to right,rgb(230,230,230) 0%,rgb(200,200,200) 100%);  
+    -fx-background-radius: 0;
+    -fx-padding: 4 6 4 6; 
+    -fx-background-insets: 1 -8 1 1;   
+}
+.scroll-bar:horizontal .increment-button {
+    -fx-background-color: linear-gradient(to right,rgb(230,230,230) 0%,rgb(200,200,200) 100%);  
+    -fx-background-radius: 0;
+    -fx-padding: 4 6 4 6;
+    -fx-background-insets: 1 1 1 -8;   
+}
+.scroll-bar:vertical .increment-button:pressed, .scroll-bar:vertical .decrement-button:pressed{
+    -fx-background-color: linear-gradient(to right,rgb(195,195,195) 0%,rgb(185,185,185) 100%);
+}
+.scroll-bar:horizontal .increment-button:pressed, .scroll-bar:horizontal .decrement-button:pressed{
+    -fx-background-color: linear-gradient(to right,rgb(195,195,195) 0%,rgb(185,185,185) 100%);
+}
+.scroll-bar:horizontal .increment-arrow {
+    -fx-background-color: rgb(120,120,120);
+    -fx-background-insets: 0;
+    -fx-padding:7 6 0 0;
+    -fx-shape: "m 4.75,9.501 2.889,0 3.86,4.124 -3.86,4.125 -2.889,0 L 8.125,13.625 4.75,9.501 z";
+}
+.scroll-bar:horizontal .decrement-arrow {
+    -fx-background-color: rgb(120,120,120);
+    -fx-background-insets: 0;
+    -fx-padding:7 6 0 0;
+    -fx-shape: "m 11.499,17.75 -2.889,0 -3.86,-4.124 3.86,-4.125 2.889,0 -3.375,4.125 3.375,4.124 z";   
+}
+.scroll-bar:vertical .increment-arrow {
+    -fx-background-color: rgb(120,120,120);
+    -fx-background-insets: 0;
+    -fx-padding: 6 7 0 0;
+    -fx-shape: "m 12.249,10.251 0,2.889 L 8.125,17 4,13.14 l 0,-2.889 4.125,3.375 4.124,-3.375 z";      
+}
+.scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: rgb(120,120,120);
+    -fx-background-insets: 0;
+    -fx-padding: 6 7 0 0;
+    -fx-shape: "m 4,17 0,-2.889 4.124,-3.86 4.125,3.86 0,2.889 L 8.124,13.625 4,17 z";
+}
+
+/*******************************************************************************
+ * TableView                                                                   *
+ ******************************************************************************/
+.table-cell {  
+    -fx-border-color: transparent rgb(235,235,235) transparent transparent;  
+    -fx-text-fill: rgb(50,50,50);
+}
+.table-view {    
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;        
+}
+.table-view:focused {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+.table-row-cell {    
+    -fx-background-color: rgb(250,250,250);
+    -fx-background-insets: 0, 0 0 1 0; 
+}
+.table-row-cell:odd {
+    -fx-background-color: rgb(240,240,240);   
+    -fx-background-insets: 0, 0 0 1 0; 
+}
+.table-view:focused .table-row-cell:focused,.table-view:focused .table-row-cell:focused:odd {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0; 
+}
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0;
+}
+.table-view:focused .table-row-cell:filled:selected, .table-view:row-selection .table-row-cell:filled:hover:selected {    
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0;
+}
+.table-view:focused .table-row-cell:filled:focused:selected:hover {    
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;    
+}
+.table-row-cell:filled:selected:focused, .table-row-cell:filled:selected {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;  
+}
+.table-view:row-selection .table-row-cell:filled:hover { 
+    -fx-background-color:  linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+}
+.table-view:row-selection .table-row-cell:filled:focused:hover { 
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;
+}
+.table-view:focused .table-row-cell:filled:focused:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;   
+}
+.table-view .column-header-background {
+    -fx-background-color: transparent;   
+}
+.table-view .column-header .label {
+    -fx-font-size:12;
+}
+.table-view .column-header {        
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%, rgb(235,235,235) 100%);    
+    -fx-border-color: rgb(190,190,190);
+    -fx-border-insets: -1 0 0 -1;    
+}
+.table-view .filler {       
+    -fx-background-color: linear-gradient(to bottom,rgb(220,220,220) 0%, rgb(235,235,235) 100%);    
+    -fx-border-color: rgb(190,190,190);
+    -fx-border-insets: -1 0 0 -1;       
+}
+.table-view .column-drag-header {    
+    -fx-background-color: rgb(190,190,190);
+    -fx-opacity: 0.8;
+}
+.table-view .column-drag-header .label {    
+    -fx-text-fill: rgb(50,50,50);
+}
+.table-view .column-resize-line {  
+    -fx-background-color: rgb(150,150,150);
+}
+.table-view .column-overlay {
+    -fx-background-color: rgb(150,150,150);
+    -fx-opacity: 0.3;
+}
+.table-view .arrow {
+    -fx-background-color: rgb(50,50,50);
+    -fx-padding: 0.2em;
+    -fx-shape: "m 4,17 0,-2.889 4.124,-3.86 4.125,3.86 0,2.889 L 8.124,13.625 4,17 z";
+}
+.table-view .scroll-bar:vertical .track-background {
+    -fx-background-insets: -1 -1 -1 0;
+}
+.table-view .scroll-bar:vertical .track {
+    -fx-background-insets: -1 -1 -1 0, 0 0 0 1;
+}
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-insets: -1 -1 -1 0, 0 0 0 1;
+}
+.table-view .scroll-bar:vertical .decrement-button {
+    -fx-background-insets: 0 0 -8 1;
+    -fx-padding: 6 3 6 4;
+}
+.table-view .scroll-bar:vertical .increment-button {
+    -fx-background-insets: -8 0 0 1;
+    -fx-padding: 6 3 6 4;
+}
+.table-view .scroll-bar:horizontal .track-background {
+    -fx-background-insets: 0 -1 -1 -1;
+}
+.table-view .scroll-bar:horizontal .track {
+    -fx-background-insets: 0 -1 -1 -1, 1 0 0 0;
+}
+.table-view .scroll-bar:horizontal .thumb {
+    -fx-background-insets: 0 -1 -1 -1, 1 0 0 0;
+}
+.table-view .scroll-bar:horizontal .decrement-button {  
+    -fx-background-insets: 1 -8 0 0;
+    -fx-padding: 3 6 4 6;
+}
+.table-view .scroll-bar:horizontal .increment-button {
+    -fx-background-insets: 1 0 0 -8;
+    -fx-padding: 3 6 4 6;
+}
+
+/*******************************************************************************
+ * ListView                                                                    *
+ ******************************************************************************/
+.list-cell{
+    -fx-background-color: rgb(240,240,240); 
+    -fx-border-color: transparent rgb(235,235,235) transparent transparent;  
+    -fx-text-fill: rgb(50,50,50);
+}
+.list-cell:empty, .list-cell:odd:empty,
+.list-view .list-cell:hover:empty,
+.list-view .list-cell:odd:hover:empty {   
+    -fx-background-color: rgb(240,240,240); 
+    -fx-background-insets: 0;     
+}
+.list-cell:odd {
+    -fx-background-color: rgb(250,250,250);   
+    -fx-background-insets: 0, 0 0 1 0; 
+}
+.list-view { 
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;  
+}
+.list-view:focused {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+.list-view:focused .list-cell:filled:selected,
+.list-view:focused .list-cell:filled:selected:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;   
+}
+.list-view:focused .list-cell:filled:focused:selected,
+.list-view:focused .list-cell:odd:filled:selected:focused:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(180,180,180) 0%, rgb(200,200,200) 100%);
+    -fx-background-insets: 0;  
+}
+.list-view:focused .list-cell:focused {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+.list-view .list-cell:hover,
+.list-view .list-cell:odd:hover, 
+.list-view:focused .list-cell:odd:focused:hover,
+.list-view:focused .list-cell:focused:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0;  
+}
+.list-view .list-cell:selected,
+.list-view .list-cell:odd:focused:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0; 
+}
+.list-view .corner {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+/*******************************************************************************
+ * Label                                                                       *
+ ******************************************************************************/
+.label {
+    -fx-text-fill: rgb(50,50,50);
+}
+
+/*******************************************************************************
+ * TextInput                                                                   *
+ ******************************************************************************/
+.text-input {
+    -fx-highlight-fill: rgb(170,170,170);
+    -fx-highlight-text-fill: rgb(50,50,50);
+    -fx-text-fill: rgb(50,50,50);
+}
+
+/*******************************************************************************
+ * TextField                                                                   *
+ ******************************************************************************/
+.text-field {    
+    -fx-background-color: rgb(225,225,225), rgb(255,255,255);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3;
+    -fx-padding: 2 4 2 4;   
+    -fx-prompt-text-fill: derive(white,-30%);
+}
+.text-field:hover {
+    -fx-background-color: rgb(225,225,225),rgb(252,252,252);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3;
+}
+.text-field:focused {
+    -fx-background-color: rgb(225,225,225), rgb(255,255,255);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3;   
+}
+
+/*******************************************************************************
+ * MenuBar                                                                     *
+ ******************************************************************************/
+.menu-bar {    
+    -fx-padding:  0;
+    -fx-background-color: rgb(245,245,245);
+    -fx-background-insets: 0;
+}
+.menu-bar .menu-button .label {
+    -fx-padding: 1 4 1 4;
+    -fx-text-fill: rgb(50,50,50);
+}
+
+/*******************************************************************************
+ * Menu Button                                                                 *
+ ******************************************************************************/
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;    
+    -fx-background-radius: 0;
+    -fx-text-fill: rgb(50,50,50);
+}
+.menu-button:focused {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0;
+}
+.menu-button:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0;
+}
+.menu-button:focused:hover {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0;
+}
+.menu-button:armed , .menu-button:focused:pressed {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+.menu-button .label {
+    -fx-padding: 2 2 2 2;
+}
+
+/*******************************************************************************
+ * MenuItem                                                                    *
+ ******************************************************************************/
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-padding: 4 5 4 5;
+}
+.menu-item:focused {
+    -fx-background-color: linear-gradient(to bottom,rgb(210,210,210) 0%, rgb(225,225,225) 100%);
+    -fx-background-insets: 1;   
+}
+.menu-item:focused .label {
+    -fx-text-fill: -fx-text-base-color;
+}
+
+/*******************************************************************************
+ * Context Menu                                                                *
+ ******************************************************************************/
+.context-menu {    
+    -fx-background-color: rgb(245,245,245);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 2 2 2 2;  
+}
+.context-menu .separator {
+    -fx-padding: 1 4 1 4;
+}
+.context-menu .scroll-arrow {
+    -fx-padding: 6;
+    -fx-background-color: rgb(230,230,230);
+}
+.context-menu .scroll-arrow:hover {
+    -fx-padding: 6;
+    -fx-background-color: derive(rgb(230,230,230), 30%);    
+}
+.context-menu .scroll-arrow:hover .menu-down-arrow,.context-menu .scroll-arrow:hover .menu-up-arrow {
+    -fx-background-color: -fx-mark-color;
+}
+
+/*******************************************************************************
+ * Separator                                                                   *
+ ******************************************************************************/
+.separator {  
+}
+.separator .line {
+    -fx-border-style: none;    
+    -fx-border-width: 1;
+}
+
+/*******************************************************************************
+ * HTMLEditor                                                                  *
+ ******************************************************************************/
+.html-editor{
+    -fx-border-width: 0.5;
+    -fx-border-color: rgb(150,150,150);
+}
+
